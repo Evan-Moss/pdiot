@@ -15,7 +15,8 @@ You are strongly encouraged to use version control for your own work. A short tu
 Start by cloning this repository:
 1. Open the terminal app.
 2. Navigate to the folder where you wish to have the files using the terminal.
-3. Type ```git clone https://github.com/specknet/pdiot-practical.git``` and press enter.
+3. Run ```git clone https://github.com/specknet/pdiot-practical.git``` to get the repo.
+4. Type ```git submodule init``` and ```git submodule update``` to download the Android app as well.
 4. Now all the files can be found in the "pdiot-practical" folder.
 
 Alternatively you can download the files like this:
@@ -23,6 +24,10 @@ Alternatively you can download the files like this:
 2. Click the "Clone or Download" button. 
 3. Select the "Download as ZIP.
 4. Save and unarchive the file.
+5. On the Github page click on "orient-android", this will take you to the code for the Android app.
+6. Once on the "orient-android" page proceed similarly and download the files as zip.
+7. Unarchive the files inside the "pdiot-practical" folder.
+8. Now you should have all the required files in their place.
 
 # Data Analysis
 
@@ -157,7 +162,12 @@ In order to test that the everything is set up properly, we will install the app
 
 1. Open Android Studio
 2. Open the orient-android project which has been downloaded along with the rest of the files
-3. Navigate to 
+3. Navigate to "app/src/main/java/com/specknet/orientandroid" and open the "MainActivity.java" file.
+4. At the top of the file you will find three variables (ORIENT_BLE_ADDRESS, ORIENT_QUAT_CHARACTERISTIC, ORIENT_RAW_CHARACTERISTIC) whose values have to be filled in by you. Note: ORIENT_BLE_ADDRESS reffers to the MAC Address of the cube.
+5. Connect the phone to the computer using a USB cable.
+6. Press on the "Run App" button, which can be found in the top right part of the Android Studio interface. This will compile the code and install the app on the phone.
+7. Unlock the phone and open the app. It should automatically connect to your Cube and start displaying data.
+
 
 
 ## 8. Task description
@@ -168,6 +178,8 @@ Your task is to extend the current application in the following way:
 
 
 # Embedded Development
+
+## Introduction
 
 This section concerns embedded development using the MBed embedded development platform. You will use this to receive sensor data and later to run your own step tracking algorithms.
 
@@ -186,7 +198,7 @@ You have been provided with a Nordic NRF52-DK board, which should be set up as f
 
 ### Updating the bootloader
 
-1. Download the **0246\_sam3u2c\_mkit\_dk\_dongle\_nrf5x\_0x5000****.bin** bootloader image.
+1. Locate the **0246\_sam3u2c\_mkit\_dk\_dongle\_nrf5x\_0x5000.bin** bootloader image. It should be under "pdiot-practical/NRF25-DK".
 2. Switch off the dev board.
 3. Connect to your PC via USB.
 4. Whilst holding down the rest button, turn on the dev board.
@@ -199,7 +211,7 @@ You have been provided with a Nordic NRF52-DK board, which should be set up as f
 
 First make sure that you can run a basic program on the dev board. You can always return to this example later to verify that your board is still working. The following firmware .hex files are available from the following GitHub repository:
 
-1. Download the **BLE\_LED\_NRF52\_DK.hex** firmware image.
+1. Locate the **BLE\_LED\_NRF52\_DK.hex** firmware image. It should be under "pdiot-practical/NRF25-DK".
 2. Switch on the dev board and connect it to your PC via USB. It should appear as a mass storage device.
 3. Copy the firmware to the mass storage device.
 4. Turn the board off and on again to run the program.
@@ -228,14 +240,17 @@ You have been provided with an MPU-9250, which is mounted on a Sparkfun breakout
 
 ### Testing communication
 
-The provided **I2C\_HelloWorld\_Mbed\_NRF52\_DK.hex** program tests communication between the NRF52-DK and the PC (via USB-serial port) and the MPU-9250 (via I2C).
-1. Connect the dev board to the PC via USB and switch on.
+The provided **I2C\_HelloWorld\_Mbed\_NRF52\_DK.hex** program tests communication between the NRF52-DK and the PC (via USB-serial port) and the MPU-9250 (via I2C). Run the app by copying the file on the board and then turning it off and on again.
+
+<!-- 1. Connect the dev board to the PC via USB and switch on.
 2. Using a terminal application, open a connection to the J-Link CDC serial port using the following settings:
   1. Baud rate: 9600
   2. 8 bits
   3. Stop bits: 1
 3. Copy the above .hex file to the NRF52-DK mass storage device.
-4. The program should now run and display gyro output from the MPU. The values should be close to zero when static and increase when you rotate the sensor.
+4. The program should now run and display gyro output from the MPU. The values should be close to zero when static and increase when you rotate the sensor. -->
+
+Now we need to establish a serial connection to the board to test if it works. The following [guide](https://learn.sparkfun.com/tutorials/terminal-basics/command-line-windows-mac-linux) provides instructions on how to do so on both Unix and Windows machines. Note: the device should look like this "tty.usbmodem14202", if this doesn't work, try "cu._device-name_".
 
  ![serial terminal](serial.png)
 

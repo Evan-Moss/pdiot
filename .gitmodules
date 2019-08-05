@@ -1,0 +1,3 @@
+[submodule "orient-android"]
+	path = orient-android
+	url = https://github.com/specknet/orient-android

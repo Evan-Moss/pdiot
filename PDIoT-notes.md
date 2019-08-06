@@ -132,9 +132,12 @@ Bluetooth Low Energy (BLE) provides a cheap and reliable way for low power devic
 
 The Nordic Semiconductor NRF Connect app (available on play/app store) will allow you to connect to BLE devices and interrogate the services and characteristics that they provide. It can also send/receive data and log communications to a file, which can be useful for debugging. Try this with the sensor cube to see how the sensor data is sent over BLE. Gyroscope, accelerometer and magnetometer data are packed into an 18-byte packet, where each axis of each sensor requires 2 bytes to send a 16-bit value.
 
+## 5. Nordic Thingy52 (cube)
+You will be provided with a Nordic [Thingy52] (http://www.nordicsemi.com/thingy) IoT sensor kit 
+
 Details on the architecture of the system, the characteristics for different services and the packet structure can be found [here](https://nordicsemiconductor.github.io/Nordic-Thingy52-FW/documentation/firmware_architecture.html).
 
-## 5. BLE on Android
+## 6. BLE on Android
 
 As mentioned before, the repository contains the PDIoT data collection app, which you can use as an example of BLE communication on Android. We use the RXAndroidBLE library which simplifies much of the communication code. Note that this requires Java 8 support (enabled in build.gradle as shown below).
 
@@ -151,11 +154,11 @@ android {
 }
 ```
 
-## 6. Permissions
+## 7. Permissions
 
 To make the data collection app work correctly, you&#39;ll need to enable _location_ and _storage_ permissions in _settings/apps/permissions_. Location permissions is required when scanning for BLE devices. If you don&#39;t have this you&#39;ll see a _BLE Scanning Error_ message when starting the app.
 
-## 7. Testing the development environment and collecting data
+## 8. Testing the development environment and collecting data
 
 In order to test that the everything is set up properly, we will install the app on the phone and test to see if it receives data from the Cube.
 
@@ -169,7 +172,7 @@ In order to test that the everything is set up properly, we will install the app
 
 
 
-## 8. Task description
+## 9. Task description
 
 Your task is to extend the current application in the following way: 
 * Implement a step tracking algorithm 

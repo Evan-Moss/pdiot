@@ -126,8 +126,6 @@ We use Xiomi Redmi 4A or 5A phones and can lend one if required. Other phones ma
 
 The repo contains the source code for an application that can record accelerometer and gyroscope data and write it to a CSV file. Please use this to collect walking data to ensure that all groups use a common file format and include appropriate metadata.
 
-~~Initially you can continue to use the Cube sensor and switch over to your own mbed implementation during the second half of the practical.~~
-
 ## 4. BLE Introduction
 
 Bluetooth Low Energy (BLE) provides a cheap and reliable way for low power devices to communicate. Devices advertise one of more services, which themselves contain a number of characteristics. For example, a heart rate monitor may provide a service which contains a characteristic which will send the current pulse rate. Characteristics can either be readable, writable or allow notifications, which means that new data will be streamed over BLE when it is available. This is the mode that we use to send accelerometer and gyroscope data from the Cube.
@@ -282,9 +280,11 @@ We will use the mbed development platform to compile firmware to run on the NEF5
 
 ### Online compiler
 
-We recommend that you use the mbed online IDE and compiler for your firmware development.
+We recommend that you use the [mbed online IDE and compiler](https://ide.mbed.com/compiler/) for your firmware development. In order to use this tool you first need to create an account.
 
 Once you&#39;ve registered for an account and set your hardware to the NRF52-DK you&#39;ll have access to your own workspace. This will allow you to compile code and download the resulting firmware image to copy to the dev board. There is also an in-built version control system for you to use for your mbed projects.
+
+A quick guide on how to use this tool can be found [here](https://os.mbed.com/docs/mbed-os/v5.13/quick-start/online-with-the-online-compiler.html).
 
 ### Example code
 
@@ -319,3 +319,6 @@ There are several methods of debugging that you may find useful:
 ### Mbed bugs
 
 Mbed is not perfect and you may experience compile errors or other bugs. Please share these and any solutions on piazza. Often rolling back the mbed-os library to the previous version using the _Revisions_ option in the online compiler will fix build errors.
+
+# Troubleshooting
+

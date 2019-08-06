@@ -53,7 +53,7 @@ Alternatively you can download the files like this:
 ## 2a. Create an environment for PDIoT
 1. Update conda: `conda update conda`
 1. Create the environment for the course. Call it py3iaml and install python 3 (*hence the name*):
-```conda create -n py2pdiot python=2.7```
+```conda create -n py2pdiot python=3.7```
 
 ## 2b. Err...what's an environment?
 An environment is a collection of packages of specific versions. You can have
@@ -69,7 +69,7 @@ anything you execute:
 1. Print a list of python installations on your `$PATH` (the top one is the one
     that will get executed if you type `python` in the terminal):
     `which python -a`
-1. Activate the new environment: `source activate py2pdiot`
+1. Activate the new environment: `source activate py3pdiot`
 1. Show list of python installations on your system *now*: `which python -a`
 1. Show your system `$PATH` again: `echo $PATH`
 1. Deactivate the new environment: `source deactivate`
@@ -78,7 +78,7 @@ anything you execute:
 1. You can clone environments; this is useful for backing up: `conda create
 --name empty_bkp --clone empty`
 1. Make another python 3 environment with numpy already installed: `conda create
---name py2 python=2.7 numpy`
+--name py3 python=3.7 numpy`
 1. `conda env list`
 1. Activate py3: `source activate py3`
 1. Show the installed packages: `conda list`
@@ -95,17 +95,18 @@ that conda installed a dependency of numpy (a python package)...python!
     * `conda env list`
     * `conda remove --name empty --all`
     * `conda remove --name empty_bkp --all`
-    * `conda remove --name py2 --all`
+    * `conda remove --name py3 --all`
     * `conda env list`
 
-## 3. Develop step-tracking algorithms
+## 3. Recommended setup
+* Conda environment with python 3.7
+* Jupyter notebooks + [Numpy](https://docs.scipy.org/doc/numpy-1.17.0/numpy-user-1.17.0.pdf) + [Pandas](https://pandas.pydata.org/pandas-docs/stable/getting_started/10min.html) + [Matplotlib](https://matplotlib.org/tutorials/introductory/pyplot.html#sphx-glr-tutorials-introductory-pyplot-py)
+
+
+## 4. Task - Develop step-tracking algorithm
 Initially, we recommend developing step tracking algorithms using existing walking data and running them offline on a PC. Once you are happy with your algorithm it can be ported to your Android app to perform steptracking on live sensor data.
 
 Python and Jupyter Notebook provides a rapid way to explore sensor data using various data analysis techniques. Further information for this section is contained in the accompanying Jupyter notebook.
-
-## 4. Recommended setup
-* Conda environment with python 2.7
-* Jupyter notebooks + [Numpy](https://docs.scipy.org/doc/numpy-1.17.0/numpy-user-1.17.0.pdf) + [Pandas](https://pandas.pydata.org/pandas-docs/stable/getting_started/10min.html) + [Matplotlib](https://matplotlib.org/tutorials/introductory/pyplot.html#sphx-glr-tutorials-introductory-pyplot-py)
 
 
 

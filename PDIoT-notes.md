@@ -133,7 +133,7 @@ Bluetooth Low Energy (BLE) provides a cheap and reliable way for low power devic
 The Nordic Semiconductor NRF Connect app (available on play/app store) will allow you to connect to BLE devices and interrogate the services and characteristics that they provide. It can also send/receive data and log communications to a file, which can be useful for debugging. Try this with the sensor cube to see how the sensor data is sent over BLE. Gyroscope, accelerometer and magnetometer data are packed into an 18-byte packet, where each axis of each sensor requires 2 bytes to send a 16-bit value.
 
 ## 5. Nordic Thingy52 (cube)
-You will be provided with a Nordic [Thingy52] (http://www.nordicsemi.com/thingy) IoT sensor kit 
+You will be provided with a Nordic [Thingy52](http://www.nordicsemi.com/thingy) IoT sensor kit which can be used to learn about motion sensors and to collect walking data. There is a supporting [Android app](https://play.google.com/store/apps/details?id=no.nordicsemi.android.nrfthingy&hl=en_US) available.
 
 Details on the architecture of the system, the characteristics for different services and the packet structure can be found [here](https://nordicsemiconductor.github.io/Nordic-Thingy52-FW/documentation/firmware_architecture.html).
 
@@ -298,6 +298,11 @@ The OS5 mbed-os-exanple projects are a good starting point for your own firmware
 We recommend starting with the blinky example, which flashes LED1 as seen in the first test program above.
 
 [https://os.mbed.com/teams/mbed-os-examples/code/mbed-os-example-blinky/](https://os.mbed.com/teams/mbed-os-examples/code/mbed-os-example-blinky/)
+
+Here are two further examples that include Bluetooth functionality:
+
+https://os.mbed.com/teams/Bluetooth-Low-Energy/code/BLE_GATT_Example/
+https://os.mbed.com/teams/mbed-os-examples/code/mbed-os-example-ble-Button/
 
 You can use the _Import into compiler_ button to import the project into your own workspace in the mbed online compiler. Now try to compile and run the blinky example on your board.
 

@@ -2,15 +2,15 @@
 
 # Introduction
 
-The PDIoT coursework involves using an inertial sensor to detect steps when walking. You will use an embedded development board to interface with an inertial sensor. The dev board should then communicate wirelessly with an Android app, which you will develop.
+The coursework for Principles and Design of IoT systems: from Devices to Data Analytics (PDIoT) complements the accompanying lectures by implementing an end-to-end IoT system: from a wearable application idea to a working prototype. You are given an inertial sensor, embedded development board and a mobile phone, and your task is to realise the wearable application as a working prototype, including developing the mobile application to interface wirelessly with the inertial sensor to stream data, implement data analytics and visualise the effects on the phone. o interface with an inertial sensor. 
 
 The rest of this document is split into sections corresponding to each part of the practical and provides setup instructions and suggested first steps.
 
 # Git Repository
 
-This document are supporting files are available from the following GitHub repository: [https://github.com/specknet/pdiot-practical](https://github.com/specknet/pdiot-practical).
+A list of supporting files are available from the following GitHub repository: [https://github.com/specknet/pdiot-practical](https://github.com/specknet/pdiot-practical).
 
-You are strongly encouraged to use version control for your own work. A short tutorial on Git and Github can be found [here](https://www.freecodecamp.org/news/what-is-git-and-how-to-use-it-c341b049ae61/).
+You are encouraged to use version control for your own work. A short tutorial on Git and Github can be found [here](https://www.freecodecamp.org/news/what-is-git-and-how-to-use-it-c341b049ae61/).
 
 Start by cloning this repository:
 1. Open the terminal app.
@@ -19,19 +19,19 @@ Start by cloning this repository:
 4. Type ```git submodule init``` and ```git submodule update``` to download the Android app as well.
 4. Now all the files can be found in the "pdiot-practical" folder.
 
-Alternatively you can download the files like this:
+Alternatively you can download the files in the following way:
 1. Go to the link above. 
 2. Click the "Clone or Download" button. 
 3. Select the "Download as ZIP.
 4. Save and unarchive the file.
-5. On the Github page click on "orient-android", this will take you to the code for the Android app.
+5. On the Github page click on "orient-android", which will take you to the code for the Android app.
 6. Once on the "orient-android" page proceed similarly and download the files as zip.
 7. Unarchive the files inside the "pdiot-practical" folder.
-8. Now you should have all the required files in their place.
+8. You should now have all the required files in their place.
 
 # Data Analysis
 
-## 1. If you don't have it - Install conda
+## 1. If you don't already have it then Install conda
 1. **Check you don't already have conda installed!**
     1. `which conda`
     1. **if you already have it installed, skip ahead to Create an Environment**
@@ -103,43 +103,43 @@ that conda installed a dependency of numpy (a python package)...python!
 * Jupyter notebooks + [Numpy](https://docs.scipy.org/doc/numpy-1.17.0/numpy-user-1.17.0.pdf) + [Pandas](https://pandas.pydata.org/pandas-docs/stable/getting_started/10min.html) + [Matplotlib](https://matplotlib.org/tutorials/introductory/pyplot.html#sphx-glr-tutorials-introductory-pyplot-py)
 
 
-## 4. Task - Develop step-tracking algorithm
-Initially, we recommend developing step tracking algorithms using existing walking data and running them offline on a PC. Once you are happy with your algorithm it can be ported to your Android app to perform steptracking on live sensor data.
+## 4. Task - Develop the step-tracking algorithm
+We recommend that you develop the step tracking algorithms using existing walking data and running them offline on a PC. Once you are happy with your algorithm, it can be ported to your Android app to perform steptracking on live sensor data.
 
-Python and Jupyter Notebook provides a rapid way to explore sensor data using various data analysis techniques. Further information for this section is contained in the accompanying Jupyter notebook.
+Python and Jupyter Notebook are tools for rapid analysis of the sensor data. Further information for this section is contained in the accompanying Jupyter notebook.
 
 
 
 # Android
 
-The practical will require you to develop an Android app, which will interface to your development board using Bluetooth LE and provide a user interface showing the step count. You will also be provided with a basic app which can be used to record sensor data for offline analysis.
+The practical will require you to develop an Android app, which will interface to your wireless sensor (called the Cube) using Bluetooth LE and provide a user interface showing the step count. You will also be provided with a basic app which can be used to record sensor data for offline analysis.
 
-## 1. If you don't have it - Install Android Studio
+## 1. If you don't already have it - Install Android Studio
 
 It is recommended that you use Android Studio. The IDE can be downloaded from [here](https://developer.android.com/studio/).
 
 ## 2. Phone
 
-We use Xiomi Redmi 4A or 5A phones and can lend one if required. Other phones may work for the practical but there can be Bluetooth reliability issues with other devices.
+We use Xiomi Redmi 4A or 5A phones and can lend one if required. Other phones may work for the practical but there can be Bluetooth compatibility issues with other devices.
 
 ## 3. Data Collection App
 
-The repo contains the source code for an application that can record accelerometer and gyroscope data and write it to a CSV file. Please use this to collect walking data to ensure that all groups use a common file format and include appropriate metadata.
+The repo contains the source code for an application that can record accelerometer and gyroscope data and record them in a CSV file. Please use this to collect walking data to ensure that all groups use a common file format and include appropriate metadata.
 
 ## 4. BLE Introduction
 
-Bluetooth Low Energy (BLE) provides a cheap and reliable way for low power devices to communicate. Devices advertise one of more services, which themselves contain a number of characteristics. For example, a heart rate monitor may provide a service which contains a characteristic which will send the current pulse rate. Characteristics can either be readable, writable or allow notifications, which means that new data will be streamed over BLE when it is available. This is the mode that we use to send accelerometer and gyroscope data from the Cube.
+Bluetooth Low Energy (BLE) provides wireless communications for low power devices. Devices advertise one or more services, which themselves contain a number of characteristics. For example, a heart rate monitor may provide a service which contains a characteristic which will send the current pulse rate. Characteristics can either be readable, writable or allow notifications, which means that new data will be streamed over BLE when it is available. This is the mode that we use to send accelerometer and gyroscope data from the Cube.
 
-The Nordic Semiconductor NRF Connect app (available on play/app store) will allow you to connect to BLE devices and interrogate the services and characteristics that they provide. It can also send/receive data and log communications to a file, which can be useful for debugging. Try this with the sensor cube to see how the sensor data is sent over BLE. Gyroscope, accelerometer and magnetometer data are packed into an 18-byte packet, where each axis of each sensor requires 2 bytes to send a 16-bit value.
+The Nordic Semiconductor NRF Connect app (available on play/app store) will allow you to connect to BLE devices and interrogate the services and characteristics that they provide. It can also send/receive data and log communications to a file, which can be useful for debugging. Try this with the Cube to see how the sensor data is sent over BLE. Gyroscope, accelerometer and magnetometer data are packed into an 18-byte packet, where each axis of each sensor requires 2 bytes to send a 16-bit value.
 
-## 5. Nordic Thingy52 (cube)
+## 5. Nordic Thingy52 (Cube)
 You will be provided with a Nordic [Thingy52](http://www.nordicsemi.com/thingy) IoT sensor kit which can be used to learn about motion sensors and to collect walking data. There is a supporting [Android app](https://play.google.com/store/apps/details?id=no.nordicsemi.android.nrfthingy&hl=en_US) available.
 
 Details on the architecture of the system, the characteristics for different services and the packet structure can be found [here](https://nordicsemiconductor.github.io/Nordic-Thingy52-FW/documentation/firmware_architecture.html).
 
 ## 6. BLE on Android
 
-As mentioned before, the repository contains the PDIoT data collection app, which you can use as an example of BLE communication on Android. We use the RXAndroidBLE library which simplifies much of the communication code. Note that this requires Java 8 support (enabled in build.gradle as shown below).
+As mentioned previously, the repository contains the PDIoT data collection app, which you can use as an example of BLE communication on Android. We use the RXAndroidBLE library which simplifies much of the communication code. Note that this requires Java 8 support (enabled in build.gradle as shown below).
 
 [https://polidea.github.io/RxAndroidBle](https://polidea.github.io/RxAndroidBle)
 
@@ -160,14 +160,14 @@ To make the data collection app work correctly, you&#39;ll need to enable _locat
 
 ## 8. Testing the development environment and collecting data
 
-In order to test that the everything is set up properly, we will install the app on the phone and test to see if it receives data from the Cube.
+In order to test that the environment has been set up properly, we will install the app on the phone and test to see if it receives data from the Cube.
 
 1. Open Android Studio
 2. Open the orient-android project which has been downloaded along with the rest of the files
 3. Navigate to "app/src/main/java/com/specknet/orientandroid" and open the "MainActivity.java" file.
-4. At the top of the file you will find three variables (ORIENT_BLE_ADDRESS, ORIENT_QUAT_CHARACTERISTIC, ORIENT_RAW_CHARACTERISTIC) whose values have to be filled in by you. Note: ORIENT_BLE_ADDRESS reffers to the MAC Address of the cube.
+4. At the top of the file you will find three variables (ORIENT_BLE_ADDRESS, ORIENT_QUAT_CHARACTERISTIC, ORIENT_RAW_CHARACTERISTIC) whose values have to be filled in by you. Note: ORIENT_BLE_ADDRESS refers to the MAC Address of the cube.
 5. Connect the phone to the computer using a USB cable.
-6. Press on the "Run App" button, which can be found in the top right part of the Android Studio interface. This will compile the code and install the app on the phone.
+6. Press on the "Run App" button, which can be found in the top right-hand part of the Android Studio interface. This will compile the code and install the app on the phone.
 7. Unlock the phone and open the app. It should automatically connect to your Cube and start displaying data.
 
 
@@ -183,7 +183,7 @@ Your task is to extend the current application in the following way:
 
 ## Introduction
 
-This section concerns embedded development using the MBed embedded development platform. You will use this to receive sensor data and later to run your own step tracking algorithms.
+This section concerns embedded systems development using the MBed embedded development platform. You will use this to receive sensor data and later to run your own step tracking algorithms.
 
 Test firmware has been provided for you with the following functionality:
 
@@ -252,7 +252,7 @@ The provided **I2C\_HelloWorld\_Mbed\_NRF52\_DK.hex** program tests communicatio
 3. Copy the above .hex file to the NRF52-DK mass storage device.
 4. The program should now run and display gyro output from the MPU. The values should be close to zero when static and increase when you rotate the sensor. -->
 
-Now we need to establish a serial connection to the board to test if it works. The following [guide](https://learn.sparkfun.com/tutorials/terminal-basics/command-line-windows-mac-linux) provides instructions on how to do so on both Unix and Windows machines. Note: the device should look like this "tty.usbmodem14202", if this doesn't work, try "cu._device-name_".
+Now we need to establish a serial connection to the board to test it working. The following [guide](https://learn.sparkfun.com/tutorials/terminal-basics/command-line-windows-mac-linux) provides instructions on how to do so on both Unix and Windows machines. Note: the device should look like this "tty.usbmodem14202", if this doesn't work, try "cu._device-name_".
 
  ![serial terminal](serial.png)
 
@@ -260,7 +260,7 @@ Now we need to establish a serial connection to the board to test if it works. T
 
 ### Testing BLE communication
 
-We recommend using the excellent Nordic nRF Connect app for BLE debugging. This allows you to see the services provided by your BLE device, stream data from notifications and log it to a file. [https://www.nordicsemi.com/eng/Products/Nordic-mobile-Apps/nRF-Connect-for-mobile-previously-called-nRF-Master-Control-Panel](https://www.nordicsemi.com/eng/Products/Nordic-mobile-Apps/nRF-Connect-for-mobile-previously-called-nRF-Master-Control-Panel)
+We recommend using the Nordic nRF Connect app for BLE debugging. This allows you to see the services provided by your BLE device, stream data from notifications and log it to a file. [https://www.nordicsemi.com/eng/Products/Nordic-mobile-Apps/nRF-Connect-for-mobile-previously-called-nRF-Master-Control-Panel](https://www.nordicsemi.com/eng/Products/Nordic-mobile-Apps/nRF-Connect-for-mobile-previously-called-nRF-Master-Control-Panel)
 
 Try loading the supplied **mbed-os-example-ble-BatteryLevel\_NRF52\_DK.hex** BLE example. This will send fake battery level values, for testing the Bluetooth communication.
 
@@ -319,14 +319,14 @@ There are several mbed libraries for communicating with the MPU-9250, which are 
 There are several methods of debugging that you may find useful:
 
 - LEDs – 4 of these can be switched on and off and is probably the simplest way to view output from your code
-- Buttons – There are 4 buttons on the mbed board to you can set to perform actions in your firmware
-- Serial output – As tested in the above example, provides more detailed output when connected to a PC
+- Buttons – There are 4 buttons on the mbed board that you can set to perform actions in your firmware
+- Serial output – As tested in the above example, it provides more detailed output when connected to a PC
 - BLE – More likely to be used for the final output of your firmware, but you can also send values for debugging
 - If everything seems broken, please check the coin cell battery voltage on the board!
 
 ### Mbed bugs
 
-Mbed is not perfect and you may experience compile errors or other bugs. Please share these and any solutions on piazza. Often rolling back the mbed-os library to the previous version using the _Revisions_ option in the online compiler will fix build errors.
+Mbed is not perfect and you may experience compile errors or other bugs. Please share these and any solutions. Often rolling back the mbed-os library to the previous version using the _Revisions_ option in the online compiler will fix build errors.
 
 # Troubleshooting
 

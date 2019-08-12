@@ -180,7 +180,7 @@ To access it:
 4. Select the Transfer files option.
 5. In your file browser you should now be able to find the phone and browse the files.
 
-## 9. Task description
+## 10. Task description
 
 Your task is to extend the current application in the following way: 
 * Implement a step tracking algorithm 

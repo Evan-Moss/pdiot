@@ -8,7 +8,7 @@ The rest of this document is split into sections corresponding to each part of t
 
 # Git Repository
 
-A list of supporting files are available from the following GitHub repository: [https://github.com/specknet/pdiot-practical](https://github.com/specknet/pdiot-practical).
+A list of supporting files are available from the following GitHub [repository](https://github.com/specknet/pdiot-practical). In case the orient-android app is missing after cloning visit this [repository](https://github.com/JohnBruckner/orient-android-finland)
 
 You are encouraged to use version control for your own work. A short tutorial on Git and Github can be found [here](https://www.freecodecamp.org/news/what-is-git-and-how-to-use-it-c341b049ae61/).
 
@@ -170,7 +170,15 @@ In order to test that the environment has been set up properly, we will install 
 6. Press on the "Run App" button, which can be found in the top right-hand part of the Android Studio interface. This will compile the code and install the app on the phone.
 7. Unlock the phone and open the app. It should automatically connect to your Cube and start displaying data.
 
+## 9. Accessing the data
+The data is saved directly to the storage of the phone.
+To access it:
 
+1. Connect the phone to your computer.
+2. On the phone there should appear a popup/notification indicating that it has connected.
+3. Tap on the notification, this will present you with three options: Charge this device; Transfer files, Transfer photos (PTP).
+4. Select the Transfer files option.
+5. In your file browser you should now be able to find the phone and browse the files.
 
 ## 9. Task description
 

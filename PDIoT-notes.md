@@ -120,11 +120,11 @@ It is recommended that you use Android Studio. The IDE can be downloaded from [h
 
 ## 2. Phone
 
-We use Xiomi Redmi 4A or 5A phones and can lend one if required. Other phones may work for the practical but there can be Bluetooth compatibility issues with other devices.
+We use Xiaomi Redmi 4A or 5A phones and can lend one if required. Other phones may work for the practical but there can be Bluetooth compatibility issues with other devices.
 
 ## 3. Data Collection App
 
-The repo contains the source code for an application that can record accelerometer and gyroscope data and record them in a CSV file. Please use this to collect walking data to ensure that all groups use a common file format and include appropriate metadata.
+The repo contains the source code for an application that can capture accelerometer and gyroscope data and record them in a CSV file. Please use this to collect walking data to ensure that all groups use a common file format and include appropriate metadata.
 
 ## 4. BLE Introduction
 

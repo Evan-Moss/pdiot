@@ -106,7 +106,7 @@ that conda installed a dependency of numpy (a python package)...python!
 ## 4. Task - Develop the step-tracking algorithm
 We recommend that you develop the step tracking algorithms using existing walking data and running them offline on a PC. Once you are happy with your algorithm, it can be ported to your Android app to perform steptracking on live sensor data.
 
-Python and Jupyter Notebook are tools for rapid analysis of the sensor data. Further information for this section is contained in the accompanying Jupyter notebook.
+Python and Jupyter Notebook are tools for rapid analysis of the sensor data. Further information for this section is contained in the accompanying Jupyter notebook (./jupyter notebooks/PDIoT data analysis.ipynb).
 
 
 

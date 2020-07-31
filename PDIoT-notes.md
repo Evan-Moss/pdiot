@@ -52,8 +52,8 @@ Alternatively you can download the files in the following way:
 
 ## 2a. Create an environment for PDIoT
 1. Update conda: `conda update conda`
-1. Create the environment for the course. Call it py3iaml and install python 3 (*hence the name*):
-```conda create -n py2pdiot python=3.7```
+1. Create the environment for the course. Call it pdiot and install python 3:
+```conda create -n pdiot python=3.7```
 
 ## 2b. Err...what's an environment?
 An environment is a collection of packages of specific versions. You can have

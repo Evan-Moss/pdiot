@@ -2,13 +2,17 @@
 
 # Introduction
 
-The coursework for Principles and Design of IoT systems: from Devices to Data Analytics (PDIoT) complements the accompanying lectures by implementing an end-to-end IoT system: from a wearable application idea to a working prototype. You are given an inertial sensor, embedded development board and a mobile phone, and your task is to realise the wearable application as a working prototype, including developing the mobile application to interface wirelessly with the inertial sensor to stream data, implement data analytics and visualise the effects on the phone. o interface with an inertial sensor. 
+The coursework for Principles and Design of IoT systems: from Devices to Data Analytics (PDIoT) complements the accompanying lectures by implementing an end-to-end IoT system: from a wearable application idea to a working prototype. You are given an inertial sensor, embedded development board and a mobile phone, and your task is to realise the wearable application as a working prototype, including developing the mobile application to interface wirelessly with the inertial sensor to stream data, implement data analytics and visualise the effects on the phone. o interface with an inertial sensor.
+
+This year, you will start by collecting data with the Respeck sensor. Then, you will program the NRF Cube using the mBed board as an interface. Finally, you will have a choice between:
+* continuing on the embedded development path or 
+* continuing on the android programming path and optimising your HAR model.
 
 The rest of this document is split into sections corresponding to each part of the practical and provides setup instructions and suggested first steps.
 
 # Git Repository
 
-A list of supporting files are available from the following GitHub [repository](https://github.com/specknet/pdiot-practical). In case the orient-android app is missing after cloning visit this [repository](https://github.com/JohnBruckner/orient-android-finland)
+A list of supporting files are available from the following GitHub [repository](https://github.com/specknet/pdiot-practical). In case the data collection app is missing after cloning visit this [repository](https://github.com/specknet/pdiotapp).
 
 You are encouraged to use version control for your own work. A short tutorial on Git and Github can be found [here](https://www.freecodecamp.org/news/what-is-git-and-how-to-use-it-c341b049ae61/).
 
@@ -20,12 +24,12 @@ Start by cloning this repository:
 4. Now all the files can be found in the "pdiot-practical" folder.
 
 Alternatively you can download the files in the following way:
-1. Go to the link above. 
-2. Click the "Clone or Download" button. 
+1. Go to the link above.
+2. Click the "Clone or Download" button.
 3. Select the "Download as ZIP.
 4. Save and unarchive the file.
-5. On the Github page click on "orient-android", which will take you to the code for the Android app.
-6. Once on the "orient-android" page proceed similarly and download the files as zip.
+5. On the Github page click on "pdiotapp", which will take you to the code for the Android app.
+6. Once on the "pdiotapp" page proceed similarly and download the files as zip.
 7. Unarchive the files inside the "pdiot-practical" folder.
 8. You should now have all the required files in their place.
 
@@ -52,8 +56,8 @@ Alternatively you can download the files in the following way:
 
 ## 2a. Create an environment for PDIoT
 1. Update conda: `conda update conda`
-1. Create the environment for the course. Call it py3iaml and install python 3 (*hence the name*):
-```conda create -n py2pdiot python=3.7```
+1. Create the environment for the course. Call it pdiot and install python 3:
+```conda create -n pdiot python=3.7```
 
 ## 2b. Err...what's an environment?
 An environment is a collection of packages of specific versions. You can have
@@ -69,7 +73,7 @@ anything you execute:
 1. Print a list of python installations on your `$PATH` (the top one is the one
     that will get executed if you type `python` in the terminal):
     `which python -a`
-1. Activate the new environment: `source activate py3pdiot`
+1. Activate the new environment: `source activate pdiot`
 1. Show list of python installations on your system *now*: `which python -a`
 1. Show your system `$PATH` again: `echo $PATH`
 1. Deactivate the new environment: `source deactivate`
@@ -100,11 +104,11 @@ that conda installed a dependency of numpy (a python package)...python!
 
 ## 3. Recommended setup
 * Conda environment with python 3.7
-* Jupyter notebooks + [Numpy](https://docs.scipy.org/doc/numpy-1.17.0/numpy-user-1.17.0.pdf) + [Pandas](https://pandas.pydata.org/pandas-docs/stable/getting_started/10min.html) + [Matplotlib](https://matplotlib.org/tutorials/introductory/pyplot.html#sphx-glr-tutorials-introductory-pyplot-py)
+* Jupyter notebooks + [Numpy](https://docs.scipy.org/doc/numpy-1.17.0/numpy-user-1.17.0.pdf) + [Pandas](https://pandas.pydata.org/pandas-docs/stable/getting_started/10min.html) + [Matplotlib](https://matplotlib.org/tutorials/introductory/pyplot.html#sphx-glr-tutorials-introductory-pyplot-py) + [Tensorflow2](https://www.tensorflow.org/install).
 
 
-## 4. Task - Develop the step-tracking algorithm
-We recommend that you develop the step tracking algorithms using existing walking data and running them offline on a PC. Once you are happy with your algorithm, it can be ported to your Android app to perform steptracking on live sensor data.
+## 4. Task - Develop the Human Activity Recognition (HAR) algorithm
+We recommend that you develop the HAR algorithms using existing HAR data and running them offline on a PC. Once you are happy with your algorithm, it can be ported to your Android app to perform HAR on live sensor data.
 
 Python and Jupyter Notebook are tools for rapid analysis of the sensor data. Further information for this section is contained in the accompanying Jupyter notebook (./jupyter notebooks/PDIoT data analysis.ipynb).
 
@@ -112,7 +116,7 @@ Python and Jupyter Notebook are tools for rapid analysis of the sensor data. Fur
 
 # Android
 
-The practical will require you to develop an Android app, which will interface to your wireless sensor (called the Cube) using Bluetooth LE and provide a user interface showing the step count. You will also be provided with a basic app which can be used to record sensor data for offline analysis.
+The practical will require you to develop an Android app, which will interface to your wireless sensor (called the Cube) using Bluetooth LE and provide a user interface showing the activity prediction. You will also be provided with a basic app which can be used to record sensor data for offline analysis.
 
 ## 1. If you don't already have it - Install Android Studio
 
@@ -120,11 +124,11 @@ It is recommended that you use Android Studio. The IDE can be downloaded from [h
 
 ## 2. Phone
 
-We use Xiaomi Redmi 4A or 5A phones and can lend one if required. Other phones may work for the practical but there can be Bluetooth compatibility issues with other devices.
+We use Xiaomi Redmi 4A or 5A phones and can lend one if required. Other phones may work for the practical but there can be Bluetooth compatibility issues with other devices. 
 
 ## 3. Data Collection App
 
-The repo contains the source code for an application that can capture accelerometer and gyroscope data and record them in a CSV file. Please use this to collect walking data to ensure that all groups use a common file format and include appropriate metadata.
+The repo contains the source code for an application that can capture accelerometer data from a Respeck and record them in a CSV file. Please use this to collect activity data to ensure that all groups use a common file format and include appropriate metadata.
 
 ## 4. BLE Introduction
 
@@ -163,12 +167,13 @@ To make the data collection app work correctly, you&#39;ll need to enable _locat
 In order to test that the environment has been set up properly, we will install the app on the phone and test to see if it receives data from the Cube.
 
 1. Open Android Studio
-2. Open the orient-android project which has been downloaded along with the rest of the files
-3. Navigate to "app/src/main/java/com/specknet/orientandroid" and open the "MainActivity.java" file.
-4. At the top of the file you will find three variables (ORIENT_BLE_ADDRESS, ORIENT_QUAT_CHARACTERISTIC, ORIENT_RAW_CHARACTERISTIC) whose values have to be filled in by you. Note: ORIENT_BLE_ADDRESS refers to the MAC Address of the cube.
-5. Connect the phone to the computer using a USB cable.
-6. Press on the "Run App" button, which can be found in the top right-hand part of the Android Studio interface. This will compile the code and install the app on the phone.
-7. Unlock the phone and open the app. It should automatically connect to your Cube and start displaying data.
+2. Open the pdiot project which has been downloaded along with the rest of the files
+3. Connect the phone to the computer using a USB cable.
+4. Press on the "Run App" button, which can be found in the top right-hand part of the Android Studio interface. This will compile the code and install the app on the phone.
+5. Unlock the phone and open the app. 
+6. In the app, nevigate to the Connect Respeck activity, click Scan Respeck and scan the QR code on the back on your Respeck. 
+7. The app should automatically connect to your Respeck.
+8. Go back to the main menu in the app, then to the Watch Live Processing page. You should now see live data coming from the Respeck. 
 
 ## 9. Accessing the data
 The data is saved directly to the storage of the phone.
@@ -179,12 +184,13 @@ To access it:
 3. Tap on the notification, this will present you with three options: Charge this device; Transfer files, Transfer photos (PTP).
 4. Select the Transfer files option.
 5. In your file browser you should now be able to find the phone and browse the files.
+6. The recorded files should be in the Internal Storage > Android > com.specknet.pdiotapp > files, but this might differ depending on the Android device you are using. 
 
 ## 10. Task description
 
-Your task is to extend the current application in the following way: 
-* Implement a step tracking algorithm 
-* Design a UI for the app to display the current step count
+Your task is to extend the current application in the following way:
+* Implement a Human Activity Recognition algorithm for the following activities: Sitting/Standing, Lying down, Walking, Running/Jogging, Ascending and Descending Stairs, Deskwork. 
+* Design a UI for the app to display the current performed activity
 
 
 # Embedded Development
@@ -282,8 +288,8 @@ Try loading the supplied **mbed-os-example-ble-BatteryLevel\_NRF52\_DK.hex** BLE
  Device List             |  Device details
 :-------------------------:|:-------------------------:
 ![nrf app](nrf1.png)  |  ![nrf app2](nrf2.png)
- 
- 
+
+
 
 ## Mbed development platform
 
@@ -335,6 +341,4 @@ There are several methods of debugging that you may find useful:
 ### Mbed bugs
 
 Mbed is not perfect and you may experience compile errors or other bugs. Please share these and any solutions. Often rolling back the mbed-os library to the previous version using the _Revisions_ option in the online compiler will fix build errors.
-
-# Troubleshooting
 

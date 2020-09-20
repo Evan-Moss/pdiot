@@ -2,10 +2,10 @@
 
 # Introduction
 
-The coursework for Principles and Design of IoT systems: from Devices to Data Analytics (PDIoT) complements the accompanying lectures by implementing an end-to-end IoT system: from a wearable application idea to a working prototype. You are given an inertial sensor, embedded development board and a mobile phone, and your task is to realise the wearable application as a working prototype, including developing the mobile application to interface wirelessly with the inertial sensor to stream data, implement data analytics and visualise the effects on the phone. o interface with an inertial sensor.
+The coursework for Principles and Design of IoT systems: from Devices to Data Analytics (PDIoT) complements the accompanying lectures by implementing an end-to-end IoT system: from a wearable application idea to a working prototype. You are given an inertial sensor, embedded development board and a mobile phone, and your task is to realise the wearable application as a working prototype, including developing the mobile application to interface wirelessly with the inertial sensor to stream data, implement data analytics and visualise the effects on the phone.
 
 This year, you will start by collecting data with the Respeck sensor. Then, you will program the NRF Cube using the mBed board as an interface. Finally, you will have a choice between:
-* continuing on the embedded development path or 
+* continuing on the embedded development path or
 * continuing on the android programming path and optimising your HAR model.
 
 The rest of this document is split into sections corresponding to each part of the practical and provides setup instructions and suggested first steps.
@@ -124,7 +124,7 @@ It is recommended that you use Android Studio. The IDE can be downloaded from [h
 
 ## 2. Phone
 
-We use Xiaomi Redmi 4A or 5A phones and can lend one if required. Other phones may work for the practical but there can be Bluetooth compatibility issues with other devices. 
+We use Xiaomi Redmi 4A or 5A phones and can lend one if required. Other phones may work for the practical but there can be Bluetooth compatibility issues with other devices.
 
 ## 3. Data Collection App
 
@@ -170,10 +170,10 @@ In order to test that the environment has been set up properly, we will install 
 2. Open the pdiot project which has been downloaded along with the rest of the files
 3. Connect the phone to the computer using a USB cable.
 4. Press on the "Run App" button, which can be found in the top right-hand part of the Android Studio interface. This will compile the code and install the app on the phone.
-5. Unlock the phone and open the app. 
-6. In the app, nevigate to the Connect Respeck activity, click Scan Respeck and scan the QR code on the back on your Respeck. 
+5. Unlock the phone and open the app.
+6. In the app, nevigate to the Connect Respeck activity, click Scan Respeck and scan the QR code on the back on your Respeck.
 7. The app should automatically connect to your Respeck.
-8. Go back to the main menu in the app, then to the Watch Live Processing page. You should now see live data coming from the Respeck. 
+8. Go back to the main menu in the app, then to the Watch Live Processing page. You should now see live data coming from the Respeck.
 
 ## 9. Accessing the data
 The data is saved directly to the storage of the phone.
@@ -184,12 +184,12 @@ To access it:
 3. Tap on the notification, this will present you with three options: Charge this device; Transfer files, Transfer photos (PTP).
 4. Select the Transfer files option.
 5. In your file browser you should now be able to find the phone and browse the files.
-6. The recorded files should be in the Internal Storage > Android > com.specknet.pdiotapp > files, but this might differ depending on the Android device you are using. 
+6. The recorded files should be in the Internal Storage > Android > com.specknet.pdiotapp > files, but this might differ depending on the Android device you are using.
 
 ## 10. Task description
 
 Your task is to extend the current application in the following way:
-* Implement a Human Activity Recognition algorithm for the following activities: Sitting/Standing, Lying down, Walking, Running/Jogging, Ascending and Descending Stairs, Deskwork. 
+* Implement a Human Activity Recognition algorithm for the following activities: Sitting/Standing, Lying down, Walking, Running/Jogging, Ascending and Descending Stairs, Deskwork.
 * Design a UI for the app to display the current performed activity
 
 
@@ -341,4 +341,3 @@ There are several methods of debugging that you may find useful:
 ### Mbed bugs
 
 Mbed is not perfect and you may experience compile errors or other bugs. Please share these and any solutions. Often rolling back the mbed-os library to the previous version using the _Revisions_ option in the online compiler will fix build errors.
-

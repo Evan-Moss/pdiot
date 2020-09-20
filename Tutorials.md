@@ -128,7 +128,9 @@ We use Xiaomi Redmi 4A or 5A phones and can lend one if required. Other phones m
 
 ## 3. Data Collection App
 
-The repo contains the source code for an application that can capture accelerometer data from a Respeck and record them in a CSV file. Please use this to collect activity data to ensure that all groups use a common file format and include appropriate metadata.
+The repo contains the source code for an application that can capture accelerometer data from a Respeck and record them in a CSV file. Please use this to collect activity data to ensure that all groups use a common file format and include appropriate metadata. 
+
+Refer to the Data Collection Protocol document (you can find it in this repo and in the pdiotapp repo) for information on how to place the sensors and which activities to collect. We will require everyone to collect at least 30 seconds of data for each activity and sensor positioning so that everyone has access to enough data for training their models.
 
 ## 4. BLE Introduction
 

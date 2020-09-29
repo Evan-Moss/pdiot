@@ -7,7 +7,7 @@ This week your task will be to:
 * present the collected data from Week 1
 * discuss approaches to data analysis for physical activity recognition.
 
-We have prepared a sample Jupyter Notebook to show you how to read the files stored by the Android app and make a simple accelerometer plot. You can find it [here](http://localhost:8888/notebooks/Tutorials/Week%202%20-%20PDIoT%20data%20analysis.ipynb).
+We have prepared a sample Jupyter Notebook to show you how to read the files stored by the Android app and make a simple accelerometer plot. You can find it [here](https://github.com/specknet/pdiot-practical/blob/master/Labs/Week%202%20-%20PDIoT%20data%20analysis.ipynb).
 
 Some recommended readings for Human Activity Recognition papers are:
 * [A Study on Human Activity Recognition Using Accelerometer Data from Smartphones](https://www.sciencedirect.com/science/article/pii/S1877050914008643)

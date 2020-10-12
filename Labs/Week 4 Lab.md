@@ -227,4 +227,11 @@ Click on the three arrows next to the name to subscribe to that characteristic:
 
 ![Image of subscription](https://github.com/specknet/pdiot-practical/blob/master/Images/nrf_connect_3.jpg)
 
-You should now start to see the accelerometer values being printed into the output window on your screen. 
+You should now start to see the accelerometer values being printed into the output window on your screen.
+
+# Task 4 - Connect the cube to your own Android App
+Your task for next week will be to establish a connection between the cube and the Android App you were provided with (or your own app if you built something else).
+
+For this, you will need to learn about [the packet format and characteristics](https://nordicsemiconductor.github.io/Nordic-Thingy52-FW/documentation/firmware_architecture.html) that the cube is using to send its data. You should focus on the Motion service.
+
+The documentation also contains comprehensive APIs which you can use to access the drivers and the different modules of the cube. 

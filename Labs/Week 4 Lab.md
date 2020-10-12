@@ -4,7 +4,7 @@
 
 This week we will introduce you to the mBed platform and development environment.
 
-You will start programming the Nordic Cube using the NRF board as an interface. Your task will be to establish a connection between your app and the Nordic Cube using BLE.
+You will start programming the Nordic Cube using the NRF board as an interface. Your task will be to establish a connection between your app and the Nordic Cube using BLE. Note that the terms 'Thingy' and 'Nordic Cube' are used interchangeably throughout the tutorial.
 
 # Installing the toolchain
 You will need the following software to program and debug your cube:
@@ -99,4 +99,120 @@ The board is used as an interface between the cube and your computer. You will c
 ### Connection
 Plug one end of the debug cable into the Nordic Cube and the other end into the Debug Out port of the board. Ensure that both are turned on. Then plug the USB cable into the board and connect it to the computer. You should see a `JLINK` drive appear on your desktop.
 
-![Image of connections](https://github.com/specknet/pdiot-practical/blob/master/Images/board_usb.jpeg) 
+![Image of connections](https://github.com/specknet/pdiot-practical/blob/master/Images/board_usb.jpeg)
+
+# Building the default firmware
+To compile the default firmware, follow the instructions [here](https://nordicsemiconductor.github.io/Nordic-Thingy52-FW/documentation/firmware_compile.html).
+1. Set up the path in makefile.windows or makefile.posix, depending on the platform you are using. The .posix file is used when working with Linux or macOS.
+2. Open the makefile in a text editor.
+3. Make sure that the GNU_INSTALL_ROOT variable points to your GNU Tools for Arm Embedded Processors directory. Example:
+```bash
+GNU_INSTALL_ROOT := $(PROGFILES)/GNU Tools ARM Embedded/4.9 2015q3 // Toolchain path
+GNU_VERSION := 4.9.3
+GNU_PREFIX := arm-none-eabi
+```
+You might be able to skip this if you have already changed the posix file before.
+4. Navigate to the folder `Nordic-Thingy52-FW/project/pca20020_s132/armgcc`
+5. Run the following command to compile the Thingy application code:
+```bash
+make -j
+```
+This will create a `_build` folder where all the compiled files live.
+6. Run the following to reset the cube:
+```bash
+nrfjprog --eraseall
+```
+7. Next, run the following:
+```bash
+make flash_softdevice
+make flash
+```
+
+Now the default code should be on the cube. You can verify it is working by turning of the nRF Connect App and trying to connect to your Thingy.
+
+# Debugging
+You will be able to use the nRF board to view the debug logs from the cube directly on your screen. For this you will be using the [nRF Logger Module](https://infocenter.nordicsemi.com/index.jsp?topic=%2Fcom.nordic.infocenter.sdk5.v15.2.0%2Flib_nrf_log.html&cp=4_0_0_3_26_0_1). You can see some example usages in the `Nordic-Thingy52-FW/project/pca20020_s132/main.c` file:
+
+```c
+NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"=== Thingy started! ===\r\n");
+```
+
+You will need to enable logging by navigating to `Nordic-Thingy52-FW/project/pca20020_s132/config/sdk_config.h` and change the following on line 5530:
+```c
+#define NRF_LOG_ENABLED 1
+```
+
+You can also change the debug level on line 5599:
+```c
+#define NRF_LOG_DEFAULT_LEVEL 4
+```
+The file contains information about the log levels.
+
+Once you add new logging statements to the code, make sure you are still in the armgcc folder and run:
+```bash
+make -j
+make flash
+```
+
+The new code will be transferred to the cube.
+
+To view the debug output, open up two separate terminal sessions.
+In the first terminal window run:
+```bash
+jlink -device NRF52 -if SWD -speed 4000 -AutoConnect 1
+```
+or, if you are running on macOS:
+```bash
+jlinkexe -device NRF52 -f SWD -speed 4000 -AutoConnect 1
+```
+In the second terminal window, run:
+```bash
+jlinkrttclient
+```
+
+You should now be able to see the logs in the second terminal window.
+
+# Task 1 - Adding a new debug statement
+To first check that your cube is talking to the computer, add the following logging statement to your main.c file:
+```c
+NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"=======Test=========\r\n");
+```
+Then recompile the code and check the debug output in your terminal window. You should see a continuous output of the test string, as it is being printed from an infinite loop.
+
+# Task 2 - Changing the advertising name of your Thingy
+Now we will change the cube's bluetooth name. Navigate to the `config/thingy_config.h` file and change the `DEVICE_NAME` to a string of your choice (max 10 characters).
+
+We will need to erase the `_build` folder and the cube and flash it again.
+Do the following while you are in the armgcc folder:
+```bash
+rm -rf _build
+nrfjprog --eraseall
+make -j
+make flash_softdevice
+make flash
+```
+
+Check your cube again using the nRF Connect App. The advertised name should now be your chosen string.  
+
+# Task 3 - Logging the accelerometer values
+We will now ask the cube to print out the new accelerometer values whenever it is receiving new ones.
+
+Navigate to `Nordic-Thingy52-FW/source/drivers/drv_motion.c` and go to line 190. This is where the driver is getting the raw data from the accelerometer.
+
+Under `valid_raw = true`, add the following logs:
+```c
+NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"=== Accel x = %d ===\r\n", data[0]);
+NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"=== Accel y = %d ===\r\n", data[1]);
+NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"=== Accel z = %d ===\r\n", data[2]);
+```
+
+Rebuild the files and flash the firmware again:
+```bash
+rm -rf _build
+nrfjprog --eraseall
+make -j
+make flash_softdevice
+make flash
+```
+
+Now start your debug windows and connect to the cube through the nRF Connect app. 

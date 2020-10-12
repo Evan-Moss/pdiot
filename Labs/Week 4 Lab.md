@@ -81,3 +81,22 @@ You will need:
 * The Nordic Thingy52
 * Debugging 10-pin cable
 * A USB cable
+
+### The Nordic Cube
+First, take the cube out of the rubber case. There in an LED on the top left side of your cube which will light up blue when the cube is not connected, and green when it is connected (G).
+
+![Image of cube from the top](https://github.com/specknet/pdiot-practical/blob/master/Images/cube_top.jpeg)
+
+Make sure the cube is turned on by flipping the switch towards the closest edge of the cube (A). You will also see the USB input (B) which you can use for charging the cube, and the debug output (C).
+
+![Image of cube from side](https://github.com/specknet/pdiot-practical/blob/master/Images/cube_side.jpeg)
+
+### The board
+The board is used as an interface between the cube and your computer. You will connect to the cube through a cable going into the Debug Out port (D). The USB port is used to connect the board to the computer (F). Finally, the power switch is shown in (E). Make sure the board is on whenever you plug it into the computer.
+
+![Image of board](https://github.com/specknet/pdiot-practical/blob/master/Images/board_top.jpeg)
+
+### Connection
+Plug one end of the debug cable into the Nordic Cube and the other end into the Debug Out port of the board. Ensure that both are turned on. Then plug the USB cable into the board and connect it to the computer. You should see a `JLINK` drive appear on your desktop.
+
+![Image of connections](https://github.com/specknet/pdiot-practical/blob/master/Images/board_usb.jpeg) 

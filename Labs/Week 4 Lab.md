@@ -215,4 +215,16 @@ make flash_softdevice
 make flash
 ```
 
-Now start your debug windows and connect to the cube through the nRF Connect app. 
+Now start your debug windows and connect to the cube through the nRF Connect app. You should see a screen enumerating the services offered by the cube:
+
+![Image of services](https://github.com/specknet/pdiot-practical/blob/master/Images/nrf_connect_1.jpg)
+
+Expand the `Thingy Motion Service` and find the `Thingy Raw Data Characteristic`.
+
+![Image of characteristics](https://github.com/specknet/pdiot-practical/blob/master/Images/nrf_connect_2.jpg)
+
+Click on the three arrows next to the name to subscribe to that characteristic:
+
+![Image of subscription](https://github.com/specknet/pdiot-practical/blob/master/Images/nrf_connect_3.jpg)
+
+You should now start to see the accelerometer values being printed into the output window on your screen. 

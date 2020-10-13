@@ -234,4 +234,7 @@ Your task for next week will be to establish a connection between the cube and t
 
 For this, you will need to learn about [the packet format and characteristics](https://nordicsemiconductor.github.io/Nordic-Thingy52-FW/documentation/firmware_architecture.html) that the cube is using to send its data. You should focus on the Motion service.
 
-The documentation also contains comprehensive APIs which you can use to access the drivers and the different modules of the cube. 
+The documentation also contains comprehensive APIs which you can use to access the drivers and the different modules of the cube.
+
+# Helpful resources
+You might want to take a look at the source code for the [Android Thingy App](https://github.com/NordicSemiconductor/Android-Nordic-Thingy). This contains a helpful thingylib which has information about how to parse the Thingy packet format. Have a look [here](https://github.com/NordicSemiconductor/Android-Nordic-Thingy/blob/master/thingylib/src/main/java/no/nordicsemi/android/thingylib/ThingyConnection.java).

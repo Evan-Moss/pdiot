@@ -23,7 +23,7 @@ Clone the [Nordic Thingy FW](https://github.com/NordicSemiconductor/Nordic-Thing
 ### GNU Arm embedded toolchain
 You can either use the recommended version for the nRF Cube (v4.9-2015q3) or install the latest version (v9.0-2020q2). Working with the newest version of the toolchain should not affect the code.
 
-Download the toolchain from [here](developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads). If you are working on macOS, you can install the toolchain via homebrew:
+Download the toolchain from [here](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads). If you are working on macOS, you can install the toolchain via homebrew:
 ```bash
 brew install homebrew/cask/gcc-arm-embedded
 ```

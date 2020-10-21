@@ -238,3 +238,17 @@ The documentation also contains comprehensive APIs which you can use to access t
 
 # Helpful resources
 You might want to take a look at the source code for the [Android Thingy App](https://github.com/NordicSemiconductor/Android-Nordic-Thingy). This contains a helpful thingylib which has information about how to parse the Thingy packet format. Have a look [here](https://github.com/NordicSemiconductor/Android-Nordic-Thingy/blob/master/thingylib/src/main/java/no/nordicsemi/android/thingylib/ThingyConnection.java).
+
+# Troubleshooting
+If you are not seeing the changes in your code run: 
+```bash
+make clean
+make -j
+```
+The make clean command will delete the \_build folder and make sure that the new files are compiled.
+
+For easier debuggin run just:
+```bash
+make
+```
+which will more clearly show the errors.

@@ -163,7 +163,7 @@ jlink -device NRF52 -if SWD -speed 4000 -AutoConnect 1
 ```
 or, if you are running on macOS:
 ```bash
-jlinkexe -device NRF52 -f SWD -speed 4000 -AutoConnect 1
+jlinkexe -device NRF52 -if SWD -speed 4000 -AutoConnect 1
 ```
 In the second terminal window, run:
 ```bash

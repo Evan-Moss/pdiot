@@ -1,6 +1,6 @@
 [submodule "pdiot-data"]
 	path = pdiot-data
-	url = https://github.com/specknet/pdiot-data
+	url = https://github.com/specknet/pdiot-data.git
 [submodule "pdiotapp"]
 	path = pdiotapp
 	url = https://github.com/specknet/pdiotapp

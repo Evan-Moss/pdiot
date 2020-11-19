@@ -172,10 +172,13 @@ def convert_targets(targets):
 def get_random_student(students):
     return np.random.choice(students)
 
-def leave_one_out(cleaned_data, targets, students, no_students = 1):
+def leave_one_out(cleaned_data, targets, students, no_students = 1, choose_student=None):
     un = np.unique(students)
     un = un[un != ""]
-    random_student = get_random_student(un)
+    if choose_student == None:
+        random_student = get_random_student(un)
+    else:
+        random_student = choose_student
 
     student_data = cleaned_data[students == random_student]
     student_targets = targets[students == random_student]

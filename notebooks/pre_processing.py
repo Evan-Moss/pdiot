@@ -30,11 +30,11 @@ new_activity_dict = {
     6: "Lying down left",
     7: "Lying down right",
     8: "Lying down on stomach",
-    9: "Movement",
-    10: "Running",
-    11: "Climbing stairs",
-    12: "Descending stairs",
-    13: "Desk work"
+    #9: "Movement",
+    9: "Running",
+    10: "Climbing stairs",
+    11: "Descending stairs",
+    12: "Desk work"
     }
 coversion = {
     0:0,
@@ -46,11 +46,11 @@ coversion = {
     7:6,
     6:7,
     8:8,
-    9:9,
-    11:10,
-    12:11,
-    13:12,
-    31:13
+    #9:9,
+    11:9,
+    12:10,
+    13:11,
+    31:12
 }
 
 # From Joao Maio on Piazza
@@ -105,9 +105,9 @@ def read_old_file_format(file_path):
     pdiot_header_information["Activity type"] = ACTIVITY_CODE_TO_NAME_MAPPING[pdiot_data['activity_type'].values[0]]
     pdiot_header_information["Activity code"] = pdiot_data['activity_type'].values[0]
     pdiot_header_information["Subject id"] = pdiot_data['subject_id'].values[0]
-
+    #pdiot_data = pdiot_data[pdiot_data.activity_type != 9]
     pdiot_data.drop(columns=['sensor_position','sensor_side', 'subject_id', 'activity_type', 'recording_id'], inplace=True)
-
+    
     return pdiot_data, pdiot_header_information
 
 # Change depending on what sensor position you want.
